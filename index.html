@@ -27,8 +27,8 @@
         }
 
         header img {
-            width: 750px;
-            max-width: 100%;
+            width: 100%; /* ใช้เต็มพื้นที่จอ */
+            max-width: 750px; /* ขนาดสูงสุด */
             height: auto;
             display: block;
             margin: 0 auto;
@@ -36,26 +36,25 @@
 
         header h1 {
             color: #fff;
-            font-size: 36px;
+            font-size: 28px; /* ลดขนาดในมือถือ */
             margin: 10px 0 5px;
         }
 
         header p {
             color: #ccc;
-            font-size: 18px;
+            font-size: 16px; /* ลดขนาดในมือถือ */
         }
 
         .social-buttons {
-            position: absolute;
-            right: 20px;
-            bottom: 5px;
             display: flex;
-            gap: 20px;
+            justify-content: center; /* จัดให้อยู่ตรงกลาง */
+            gap: 15px;
+            margin-top: 10px;
         }
 
         .social-buttons a img {
-            width: 30px;
-            height: 30px;
+            width: 25px; /* ลดขนาดไอคอน */
+            height: 25px;
         }
 
         /* การจัดการ Wiki Navigation */
@@ -66,22 +65,20 @@
             padding: 20px;
             margin: 20px auto;
             width: 90%;
-            max-width: 800px;
         }
 
         .wiki-navigation h2 {
             text-align: center;
             color: #fff;
-            font-size: 50px;
+            font-size: 36px; /* ลดขนาดหัวข้อในมือถือ */
             font-weight: bold;
             margin-bottom: 20px;
         }
 
         .nav-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            padding: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* รองรับมือถือ */
+            gap: 15px;
         }
 
         .nav-item {
@@ -94,7 +91,8 @@
 
         .nav-item img {
             width: 100%;
-            height: 150px;
+            height: auto;
+            max-height: 120px; /* จำกัดความสูงในมือถือ */
             object-fit: cover;
             border-radius: 10px;
             transition: transform 0.3s, box-shadow 0.3s;
@@ -107,7 +105,7 @@
 
         .nav-item p {
             margin-top: 10px;
-            font-size: 20px;
+            font-size: 18px; /* ลดขนาดในมือถือ */
             font-weight: bold;
             color: #fff;
         }
@@ -123,6 +121,30 @@
             font-size: 14px;
             color: #ccc;
         }
+
+        /* Media Queries สำหรับมือถือ */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            header p {
+                font-size: 14px;
+            }
+
+            .wiki-navigation h2 {
+                font-size: 28px;
+            }
+
+            .nav-item p {
+                font-size: 16px;
+            }
+
+            .social-buttons a img {
+                width: 20px;
+                height: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -130,6 +152,17 @@
         <img src="images/deadzone_logo.png" alt="Deadzone Logo">
         <h1>Deadzone Official Wiki</h1>
         <p>This is the official wiki for Deadzone</p>
+        <div class="social-buttons">
+            <a href="https://discord.gg/9H9EcnvMra" target="_blank">
+                <img src="images/icons/social/discord_icon.png" alt="Discord Icon">
+            </a>
+            <a href="https://youtube.com/@nekozack24?si=BNuP0yx5Gv9nrbky" target="_blank">
+                <img src="images/icons/social/youtube_icon.png" alt="YouTube Icon">
+            </a>
+            <a href="https://mcpedl.com/user/n-z/" target="_blank">
+                <img src="images/icons/social/mcpedl_icon.png" alt="MCPEDL Icon">
+            </a>
+        </div>
     </header>
 
     <!-- Wiki Navigation -->
