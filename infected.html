@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infected - Deadzone Wiki</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #131115;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1d1a21;
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #322e38;
+            border-radius: 10px;
+        }
+        header img {
+            width: 750px;
+            display: block;
+            margin: 0 auto;
+        }
+        header h1 {
+            color: #fff;
+            font-size: 50px;
+            margin: 10px 0;
+        }
+        .content {
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #1d1a21;
+            padding: 20px;
+            border: 2px solid #322e38;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+        .infected-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .infected-details img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            border: 2px solid #322e38;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            border: 2px solid #322e38;
+            padding: 10px;
+            text-align: center;
+        }
+        table th {
+            background-color: #1d1a21;
+            color: #fff;
+            font-size: 18px;
+        }
+        table tr:nth-child(even) {
+            background-color: #1d1a21;
+        }
+        table tr:hover {
+        }
+        .description {
+            margin-top: 20px;
+            background-color: #1d1a21;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .description h3 {
+            margin-top: 0;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/deadzone_logo.png" alt="Deadzone Logo">
+        <h1>Infected</h1>
+        <p>"The infected" known as zombies, are humans who have contracted pathogens transmitted by another infected individual, typically through a scratch</p>
+    </header>
+
+    <div id="content" class="content">
+        <!-- JavaScript จะเพิ่มเนื้อหาอัตโนมัติ -->
+    </div>
+
+    <footer>
+        <p style="text-align: center; color: #ccc;">Content is available under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) unless otherwise noted.</p>
+        <div style="text-align: center; color: #ccc; margin-top: 20px;">
+            <h3>References</h3>
+            <p>Data sourced from in-game analysis and developer notes.</p>
+        </div>
+    </footer>
+
+    <script type="module">
+      import { infectedData } from './infected.js';
+        const contentDiv = document.getElementById("content");
+
+        infectedData.forEach((infected) => {
+            const infectedDiv = document.createElement("div");
+            infectedDiv.classList.add("infected-section");
+
+            const nameHeader = document.createElement("h2");
+            nameHeader.textContent = infected.name;
+            nameHeader.style.color = "#fff";
+
+            const img = document.createElement("img");
+            img.src = infected.image;
+            img.alt = `${infected.name} Image`;
+
+            const table = document.createElement("table");
+            table.innerHTML = `
+                <thead>
+                    <tr>
+                        <th>Regular Health</th>
+                        <th>Sprinter Health</th>
+                        <th>Speed</th>
+                        <th>Damage</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${infected.healthregular || 'N/A'}</td>
+                        <td>${infected.healthsprinter || 'N/A'}</td>
+                        <td>${infected.speed}</td>
+                        <td>${infected.damage}</td>
+                        <td>${infected.type}</td>
+                    </tr>
+                </tbody>
+            `;
+
+            const descriptionDiv = document.createElement("div");
+            descriptionDiv.classList.add("description");
+            
+            const overviewTitle = document.createElement("h3");
+            overviewTitle.textContent = "Overview";
+            const overviewText = document.createElement("p");
+            overviewText.textContent = infected.overview;
+            
+            const behaviorTitle = document.createElement("h3");
+            behaviorTitle.textContent = "Behavior";
+            const behaviorText = document.createElement("p");
+            behaviorText.textContent = infected.behavior;
+
+            const summonTitle = document.createElement("h3");
+            summonTitle.textContent = "Summon";
+            const summonText = document.createElement("p");
+            summonText.textContent = infected.summon;
+            
+            descriptionDiv.appendChild(overviewTitle);
+            descriptionDiv.appendChild(overviewText);
+            descriptionDiv.appendChild(behaviorTitle);
+            descriptionDiv.appendChild(behaviorText);
+            descriptionDiv.appendChild(summonTitle);
+            descriptionDiv.appendChild(summonText);
+
+            // เพิ่มข้อมูลไบโอมของ Commander ถ้ามี
+            if (infected.name === "Infected Commander" && infected.biomes) {
+                const biomesTitle = document.createElement("h3");
+                biomesTitle.textContent = "Biome Clothes";
+
+                const biomesTable = document.createElement("table");
+                biomesTable.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Biome</th>
+                            <th>Clothing</th>
+                            <th>Image</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${infected.biomes.map(biome => `
+                            <tr>
+                                <td>${biome.biome}</td>
+                                <td>${biome.clothes}</td>
+                                <td><img src="${biome.image}" alt="${biome.clothes}" style="width: 100px; border-radius: 10px;"></td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                `;
+                descriptionDiv.appendChild(biomesTitle);
+                descriptionDiv.appendChild(biomesTable);
+            }
+
+            infectedDiv.appendChild(nameHeader);
+            infectedDiv.appendChild(img);
+            infectedDiv.appendChild(table);
+            infectedDiv.appendChild(descriptionDiv);
+
+            contentDiv.appendChild(infectedDiv);
+        });
+    </script>
+</body>
+</html>

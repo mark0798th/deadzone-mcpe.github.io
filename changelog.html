@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Change Log - Deadzone Wiki</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #131115;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+    header {
+      background-color: #1d1a21;
+      text-align: center;
+      padding: 20px;
+      border: 2px solid #322e38;
+      border-radius: 10px;
+      //margin-bottom: 20px;
+    }
+    header img {
+      width: 750px;
+      display: block;
+      margin: 0 auto;
+    }
+    header h1 {
+      font-size: 36px;
+      margin: 10px 0 5px;
+    }
+    header p {
+      color: #ccc;
+      font-size: 18px;
+      margin: 0;
+    }
+    .changelog {
+      margin-top: 20px;
+    }
+    .version {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #322e38;
+      border-radius: 10px;
+      background-color: #1d1a21;
+    }
+    .version h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      color: #ffcc00;
+    }
+    .version ul {
+      margin: 0;
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+    .version ul li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="images/deadzone_logo.png" alt="deadzone_logo.png">
+    <h1>Change Log</h1>
+    <p>Latest updates and change history</p>
+  </header>
+
+  <div class="changelog" id="changelog">
+    <!-- เนื้อหาจะถูกสร้างขึ้นโดย JavaScript -->
+  </div>
+
+  <script type="module">
+    import { updates } from './updates.js';
+    
+    function generateChangeLog() {
+      const changelogContainer = document.getElementById('changelog');
+
+      updates.forEach(update => {
+        const versionDiv = document.createElement('div');
+        versionDiv.classList.add('version');
+        
+        const versionTitle = document.createElement('h2');
+        versionTitle.textContent = `Version ${update.version} (${update.date})`;
+        versionDiv.appendChild(versionTitle);
+
+        const changeList = document.createElement('ul');
+        update.changes.forEach(change => {
+          const listItem = document.createElement('li');
+          listItem.textContent = change;
+          changeList.appendChild(listItem);
+        });
+        versionDiv.appendChild(changeList);
+        
+        changelogContainer.appendChild(versionDiv);
+      });
+    }
+    
+    generateChangeLog();
+  </script>
+</body>
+</html>

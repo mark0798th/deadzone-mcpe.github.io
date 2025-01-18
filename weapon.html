@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weapon - Deadzone Wiki</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- ลิงก์ Font Awesome -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #131115;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1d1a21;
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #322e38;
+            border-radius: 10px;
+        }
+        header img {
+            width: 750px;
+            display: block;
+            margin: 0 auto;
+        }
+        header h1 {
+            color: #fff;
+            font-size: 50px;
+            margin: 10px 0;
+        }
+        .content {
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #1d1a21;
+            padding: 20px;
+            border: 2px solid #322e38;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+        .weapon-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .weapon-details img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            border: 2px solid #322e38;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            border: 2px solid #322e38;
+            padding: 10px;
+            text-align: center;
+        }
+        table th {
+            background-color: #1d1a21;
+            color: #fff;
+            font-size: 18px;
+        }
+        table tr:nth-child(even) {
+            background-color: #1d1a21;
+        }
+        .description {
+            margin-top: 20px;
+            background-color: #1d1a21;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .description h3 {
+            margin-top: 0;
+            color: #fff;
+        }
+        .alert {
+            background-color: #ff9800;
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .alert i {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/deadzone_logo.png" alt="deadzone_logo.png">
+        <h1>Weapon</h1>
+        <p>"Weapons" are the tools of survival in the Deadzone, ranging from melee to firearms, each with unique attributes and strengths.</p>
+    </header>
+    
+    <div id="content" class="content">
+        <div class="alert">
+            <i class="fas fa-exclamation-triangle"></i>
+            This page is currently being updated with new data. Please check back later for more information.
+        </div>
+        <!-- JavaScript will automatically add content here -->
+    </div>
+
+    <footer>
+        <p style="text-align: center; color: #ccc;">Content is available under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) unless otherwise noted.</p>
+        <div style="text-align: center; color: #ccc; margin-top: 20px;">
+            <h3>References</h3>
+            <p>Data sourced from in-game analysis and developer notes.</p>
+        </div>
+    </footer>
+
+    <script type="module">
+      import { weaponData } from './weapon.js'; // Import weaponData
+      const contentDiv = document.getElementById("content");
+
+      weaponData.forEach((weapon) => {
+          const weaponDiv = document.createElement("div");
+          weaponDiv.classList.add("weapon-section");
+
+          const nameHeader = document.createElement("h2");
+          nameHeader.textContent = weapon.name;
+          nameHeader.style.color = "#fff";
+
+          const img = document.createElement("img");
+          img.src = weapon.image;
+          img.alt = `${weapon.name} Image`;
+
+          const table = document.createElement("table");
+          table.innerHTML = `
+              <thead>
+                  <tr>
+                      <th>Damage</th>
+                      <th>Headshot Damage</th>
+                      <th>Speed</th>
+                      <th>Damage</th>
+                      <th>Type</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>${weapon.damage || 'N/A'}</td>
+                      <td>${weapon.headshot.damage}</td>
+                      <td>${weapon.fireRate}</td>
+                      <td>${weapon.range}</td>
+                      <td>${weapon.type}</td>
+                  </tr>
+              </tbody>
+          `;
+          
+          if (weapon.status === "Inactive") {
+              const inactiveWeaponTable = document.createElement("table");
+              inactiveWeaponTable.innerHTML = `
+                  <thead>
+                      <tr>
+                          <th>Weapon Status</th>
+                          <th>Details</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>Inactive Weapon</td>
+                          <td>${weapon.name} is currently not in use.</td>
+                      </tr>
+                  </tbody>
+              `;
+              weaponDiv.appendChild(inactiveWeaponTable);
+          }
+
+          const descriptionDiv = document.createElement("div");
+          descriptionDiv.classList.add("description");
+
+          const overviewTitle = document.createElement("h3");
+          overviewTitle.textContent = "Overview";
+          const overviewText = document.createElement("p");
+          overviewText.textContent = weapon.overview;
+
+          const behaviorTitle = document.createElement("h3");
+          behaviorTitle.textContent = "Behavior";
+          const behaviorText = document.createElement("p");
+          behaviorText.textContent = weapon.behavior;
+
+          const summonTitle = document.createElement("h3");
+          summonTitle.textContent = "Summon";
+          const summonText = document.createElement("p");
+          summonText.textContent = weapon.summon;
+
+          descriptionDiv.appendChild(overviewTitle);
+          descriptionDiv.appendChild(overviewText);
+          descriptionDiv.appendChild(behaviorTitle);
+          descriptionDiv.appendChild(behaviorText);
+          descriptionDiv.appendChild(summonTitle);
+          descriptionDiv.appendChild(summonText);
+
+          weaponDiv.appendChild(nameHeader);
+          weaponDiv.appendChild(img);
+          weaponDiv.appendChild(table);
+          weaponDiv.appendChild(descriptionDiv);
+
+          contentDiv.appendChild(weaponDiv);
+      });
+    </script>
+
+    <script>
+        const showAlert = true; // true = show, false = hide
+        
+        const alertDiv = document.querySelector(".alert");
+        
+        if (!showAlert && alertDiv) {
+            alertDiv.style.display = "none";
+        }
+    </script>
+</body>
+</html>

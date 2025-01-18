@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadzone Wiki</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #131115;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1d1a21;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            border: 2px solid #322e38;
+            border-radius: 10px;
+        }
+        header img {
+            width: 750px;
+            display: block;
+            margin: 0 auto;
+        }
+        header h1 {
+            color: #fff;
+            font-size: 36px;
+            margin: 10px 0 5px;
+        }
+        header p {
+            color: #ccc;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        /* ปุ่ม Social Media ไอคอน */
+        .social-buttons {
+            position: absolute;
+            right: 20px;
+            bottom: 5px;
+            display: flex;
+            width: auto;
+            height: auto;
+            gap: 20px;
+        }
+        .social-buttons a {
+            color: white;
+            font-size: 0px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: auto;
+            height: auto;
+            max-width: 30px;
+            max-height: 30px;
+        }
+        .social-buttons a:hover {
+        }
+
+        /* Wiki Navigation */
+        .wiki-navigation {
+            background-color: #1d1a21;
+            border: 2px solid #322e38;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 800px;
+        }
+        .wiki-navigation h2 {
+            text-align: center;
+            color: #fff;
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 10px;
+        }
+        .nav-item {
+            text-align: center;
+            text-decoration: none;
+            color: white;
+        }
+        .nav-item img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            //border: 2px solid #fff;
+            //border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .nav-item:hover img {
+            //transform: scale(1.1);
+            //box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+        .nav-item p {
+            margin-top: 10px;
+            font-size: 45px;
+            font-weight: 600;
+            color: #fff;
+        }
+        footer {
+            background-color: #1d1a21;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        footer p {
+            font-size: 14px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/deadzone_logo.png" alt="deadzone_logo.png">
+        <h1>Deadzone Official Wiki</h1>
+        <p>This is the official wiki for deadzone</p>
+
+        <!-- Social Media Buttons with Icons -->
+        <div class="social-buttons">
+            <!-- Discord Icon -->
+            <a href="https://discord.gg/9H9EcnvMra" target="_blank">
+                <img src="images/icons/social/discord_icon.png" alt="discord_icon.png" width="30" height="30">
+            </a>
+            <!-- YouTube Icon -->
+            <a href="https://youtube.com/@nekozack24?si=BNuP0yx5Gv9nrbky" target="_blank">
+                <img src="images/icons/social/youtube_icon.png" alt="youtube_icon.png" width="30" height="30">
+            </a>
+            <!-- MCPEDl Icon -->
+            <a href="https://mcpedl.com/user/n-z/" target="_blank">
+                <img src="images/icons/social/mcpedl_icon.png" alt="mcpedl_icon.png" width="30" height="30">
+            </a>
+        </div>
+    </header>
+
+    <!-- Wiki Navigation -->
+    <div class="wiki-navigation">
+        <h2>Wiki Navigation</h2>
+        <div class="nav-grid">
+            <a href="infected.html" class="nav-item">
+                <img src="images/category/infected_icon.png" alt="infected_icon.png">
+                <p>Infected</p>
+            </a>
+            <a href="weapon.html" class="nav-item">
+                <img src="images/category/weapon_icon.png" alt="weapon_icon.png">
+                <p>Weapon</p>
+            </a>
+            <a href="game_mechanics.html" class="nav-item">
+                <img src="images/category/game_mechanics_icon.png" alt="game_mechanics_icon.png">
+                <p>Game Mechanics</p>
+            </a>
+            <a href="human.html" class="nav-item">
+                <img src="images/category/human_icon.png" alt="human_icon.png">
+                <p>Human</p>
+            </a>
+            <a href="vehicle.html" class="nav-item">
+                <img src="images/category/vehicle_icon.png" alt="vehicle_icon.png">
+                <p>Vehicle</p>
+            </a>
+            <a href="changelog.html" class="nav-item">
+                <img src="images/category/changelog.png" alt="changelog_icon.png">
+                <p>Change Log</p>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Content is available under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) unless otherwise noted.</p>
+    </footer>
+</body>
+</html>
